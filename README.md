@@ -107,17 +107,19 @@ Preprocessing:  StandardScaler (fit on train only)
 
 ## 📈 Results (Actual Measured Test Metrics)
 
-The model was evaluated on the held-out test set ($N=180$ samples).
+The model was evaluated on the held-out test set ($N=225$ samples, 15% stratified test split).
 
 | Metric | Measured Value | Percentage |
 |--------|----------------|------------|
-| **Test Loss** | `0.4028` | — |
-| **Test Accuracy** | `0.8278` | **82.78%** |
-| **Precision (Pass)** | `0.8357` | **83.57%** |
-| **Recall (Pass)** | `0.9360` | **93.60%** |
-| **F1-Score (Pass)** | `0.8830` | **88.30%** |
-| **Macro Average F1** | `0.7784` | **77.84%** |
-| **Weighted Average F1** | `0.8191` | **81.91%** |
+| **Test Loss** | `0.1608` | — |
+| **Test Accuracy** | `0.9422` | **94.22%** |
+| **Precision (Pass)** | `0.9426` | **94.26%** |
+| **Recall (Pass)** | `0.9504` | **95.04%** |
+| **F1-Score (Pass)** | `0.9465` | **94.65%** |
+| **Precision (Fail)** | `0.9417` | **94.17%** |
+| **Recall (Fail)** | `0.9327` | **93.27%** |
+| **Macro Average F1** | `0.9419` | **94.19%** |
+| **Weighted Average F1** | `0.9422` | **94.22%** |
 
 Full metrics details saved in: [`outputs/metrics.json`](outputs/metrics.json)
 
