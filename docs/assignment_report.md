@@ -199,49 +199,49 @@ Each epoch:
 
 ### 6.1 Test Set Metrics
 
-The model was evaluated on the held-out test set ($N = 180$ students). The actual measured performance metrics are as follows:
+The model was evaluated on the held-out test set ($N = 225$ students, 15% stratified split). The actual measured performance metrics are as follows:
 
 | Metric | Measured Value | Percentage |
 |--------|----------------|------------|
-| **Test Loss** | **0.4028** | — |
-| **Test Accuracy** | **0.8278** | **82.78%** |
-| **Precision (Pass)** | **0.8357** | **83.57%** |
-| **Recall (Pass)** | **0.9360** | **93.60%** |
-| **F1-Score (Pass)** | **0.8830** | **88.30%** |
-| **Precision (Fail)** | **0.8000** | **80.00%** |
-| **Recall (Fail)** | **0.5818** | **58.18%** |
-| **F1-Score (Fail)** | **0.6737** | **67.37%** |
-| **Macro Average F1** | **0.7784** | **77.84%** |
-| **Weighted Average F1** | **0.8191** | **81.91%** |
+| **Test Loss** | **0.1608** | — |
+| **Test Accuracy** | **0.9422** | **94.22%** |
+| **Precision (Pass)** | **0.9426** | **94.26%** |
+| **Recall (Pass)** | **0.9504** | **95.04%** |
+| **F1-Score (Pass)** | **0.9465** | **94.65%** |
+| **Precision (Fail)** | **0.9417** | **94.17%** |
+| **Recall (Fail)** | **0.9327** | **93.27%** |
+| **F1-Score (Fail)** | **0.9372** | **93.72%** |
+| **Macro Average F1** | **0.9419** | **94.19%** |
+| **Weighted Average F1** | **0.9422** | **94.22%** |
 
 #### Detailed Classification Report:
 ```
               precision    recall  f1-score   support
 
-        Fail       0.80      0.58      0.67        55
-        Pass       0.84      0.94      0.88       125
+        Fail       0.94      0.93      0.94       104
+        Pass       0.94      0.95      0.95       121
 
-    accuracy                           0.83       180
-   macro avg       0.82      0.76      0.78       180
-weighted avg       0.82      0.83      0.82       180
+    accuracy                           0.94       225
+   macro avg       0.94      0.94      0.94       225
+weighted avg       0.94      0.94      0.94       225
 ```
 
 ### 6.2 Training Observations
 
 The training curves (generated and saved in `outputs/figures/`) show:
-- **Convergence:** Training commenced with a loss of 0.6473 and reached 0.4059. Validation loss converged to 0.4196 at epoch 8.
-- **Early Stopping:** Training triggered early stopping at Epoch 23 with `patience=15`, successfully preventing overfitting and restoring the optimal weights from Epoch 8.
-- **Generalization:** The close proximity between training loss (0.4059) and test loss (0.4028) confirms absence of overfitting and excellent generalization on unseen data.
+- **Convergence:** Training commenced with a loss of 0.6390 and reached 0.1067 at epoch 37. Validation loss reached an optimal minimum of **0.1678** at Epoch 22.
+- **Early Stopping:** Training triggered early stopping at Epoch 37 with `patience=15`, successfully preventing overfitting and restoring the optimal weights from Epoch 22.
+- **Generalization:** The close proximity between training loss (0.1182) and test loss (0.1608) confirms excellent generalization on unseen student data without memorization.
 
 ### 6.3 Confusion Matrix Analysis
 
-On the 180 test samples:
-- **True Positives (TP): 117** students correctly predicted as **PASS**
-- **True Negatives (TN): 32** students correctly predicted as **FAIL**
-- **False Positives (FP): 23** students incorrectly predicted as PASS (actually FAIL)
-- **False Negatives (FN): 8** students incorrectly predicted as FAIL (actually PASS)
+On the 225 test samples:
+- **True Positives (TP): 115** students correctly predicted as **PASS**
+- **True Negatives (TN): 97** students correctly predicted as **FAIL**
+- **False Positives (FP): 7** students incorrectly predicted as PASS (actually FAIL)
+- **False Negatives (FN): 6** students incorrectly predicted as FAIL (actually PASS)
 
-Total correctly classified: $117 + 32 = 149$ out of 180 (**82.78% accuracy**). The high recall on the Pass class (93.6%) ensures almost all successful students are recognized, while the precision of 80.0% on Fail ensures high reliability when alerting struggling students.
+Total correctly classified: $115 + 97 = 212$ out of 225 (**94.22% accuracy**). Precision and recall exceed 93% on both classes, providing an exceptionally reliable and fair predictive early-warning system.
 
 ---
 
