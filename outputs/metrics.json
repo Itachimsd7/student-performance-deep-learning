@@ -1,45 +1,45 @@
 {
-  "test_loss": 0.3944404721260071,
-  "test_accuracy": 0.8333333134651184,
-  "precision": 0.8467153284671532,
-  "recall": 0.928,
-  "f1_score": 0.8854961832061069,
+  "test_loss": 0.1607523262500763,
+  "test_accuracy": 0.9422222375869751,
+  "precision": 0.9426229508196722,
+  "recall": 0.9504132231404959,
+  "f1_score": 0.9465020576131687,
   "confusion_matrix": [
     [
-      34,
-      21
+      97,
+      7
     ],
     [
-      9,
-      116
+      6,
+      115
     ]
   ],
   "classification_report_dict": {
     "Fail": {
-      "precision": 0.7906976744186046,
-      "recall": 0.6181818181818182,
-      "f1-score": 0.6938775510204082,
-      "support": 55.0
+      "precision": 0.941747572815534,
+      "recall": 0.9326923076923077,
+      "f1-score": 0.9371980676328503,
+      "support": 104.0
     },
     "Pass": {
-      "precision": 0.8467153284671532,
-      "recall": 0.928,
-      "f1-score": 0.8854961832061069,
-      "support": 125.0
+      "precision": 0.9426229508196722,
+      "recall": 0.9504132231404959,
+      "f1-score": 0.9465020576131687,
+      "support": 121.0
     },
-    "accuracy": 0.8333333333333334,
+    "accuracy": 0.9422222222222222,
     "macro avg": {
-      "precision": 0.8187065014428789,
-      "recall": 0.773090909090909,
-      "f1-score": 0.7896868671132575,
-      "support": 180.0
+      "precision": 0.9421852618176031,
+      "recall": 0.9415527654164018,
+      "f1-score": 0.9418500626230095,
+      "support": 225.0
     },
     "weighted avg": {
-      "precision": 0.8295988230634299,
-      "recall": 0.8333333333333334,
-      "f1-score": 0.82694604559381,
-      "support": 180.0
+      "precision": 0.9422183316533149,
+      "recall": 0.9422222222222222,
+      "f1-score": 0.9422015466889326,
+      "support": 225.0
     }
   },
-  "classification_report_text": "              precision    recall  f1-score   support\n\n        Fail       0.79      0.62      0.69        55\n        Pass       0.85      0.93      0.89       125\n\n    accuracy                           0.83       180\n   macro avg       0.82      0.77      0.79       180\nweighted avg       0.83      0.83      0.83       180\n"
+  "classification_report_text": "              precision    recall  f1-score   support\n\n        Fail       0.94      0.93      0.94       104\n        Pass       0.94      0.95      0.95       121\n\n    accuracy                           0.94       225\n   macro avg       0.94      0.94      0.94       225\nweighted avg       0.94      0.94      0.94       225\n"
 }
