@@ -693,18 +693,21 @@ elif page == '🔮 Student Prediction Studio':
             st.session_state.asgn = 35
             st.session_state.hrs = 1.0
             st.session_state.prev = 35
-        if p_col4.button("🔄 Reset Defaults", use_container_width=True):
-            st.session_state.att = 75
-            st.session_state.im = 55
-            st.session_state.asgn = 65
-            st.session_state.hrs = 5.0
-            st.session_state.prev = 60
+        if p_col4.button("❌ Zero Effort / Absent", use_container_width=True):
+            st.session_state.att = 0
+            st.session_state.im = 0
+            st.session_state.asgn = 0
+            st.session_state.hrs = 0.0
+            st.session_state.prev = 0
+
+        student_name = st.text_input("👤 Student Name / Roll No. (Optional Display Identifier):", value="Alex Smith (Roll #2024-CS-101)")
+        st.caption("ℹ️ **Why Name is Not an Input Feature:** In Machine Learning, names/IDs have zero predictive correlation with performance and would cause bias/overfitting. The model evaluates purely the 5 numeric indicators.")
 
         # Sliders layout
         c_in1, c_in2 = st.columns(2, gap="large")
         with c_in1:
-            attendance = st.slider('🏫 Class Attendance (%)', 30, 100, st.session_state.get('att', 75), help="Percentage of lectures attended")
-            internal_marks = st.slider('📝 Internal Test Marks (0–100)', 0, 100, st.session_state.get('im', 55), help="Midterm and quiz average")
+            attendance = st.slider('🏫 Class Attendance (%)', 0, 100, st.session_state.get('att', 75), help="Percentage of lectures attended (Cutoff is 60%)")
+            internal_marks = st.slider('📝 Internal Test Marks (0–100)', 0, 100, st.session_state.get('im', 55), help="Midterm and quiz average (Passing minimum is 35)")
             assignment_score = st.slider('📚 Assignment & Lab Score (0–100)', 0, 100, st.session_state.get('asgn', 65), help="Homework & practical assessments")
         with c_in2:
             study_hours = st.slider('⏰ Daily Study Hours (0–12h)', 0.0, 12.0, float(st.session_state.get('hrs', 5.0)), step=0.5, help="Self-study hours outside class")
@@ -732,17 +735,19 @@ elif page == '🔮 Student Prediction Studio':
             if prediction == "PASS":
                 st.markdown(f"""
                 <div class="pass-banner">
-                    <h1 style="margin:0; font-size: 2.8rem;">🎉 PREDICTION: PASS</h1>
-                    <p style="font-size: 1.2rem; margin-top: 8px; opacity: 0.95;">The student is projected to meet graduation requirements.</p>
-                    <div style="font-size: 1.5rem; font-weight: 800; margin-top: 10px;">Pass Confidence: {pass_prob*100:.1f}%</div>
+                    <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.9;">Assessment for: {student_name}</div>
+                    <h1 style="margin:4px 0; font-size: 2.6rem;">🎉 PREDICTION: PASS</h1>
+                    <p style="font-size: 1.1rem; margin-top: 6px; opacity: 0.95;">The student is projected to meet all academic graduation requirements.</p>
+                    <div style="font-size: 1.4rem; font-weight: 800; margin-top: 8px;">Pass Confidence: {pass_prob*100:.1f}%</div>
                 </div>
                 """, unsafe_allow_html=True)
             else:
                 st.markdown(f"""
                 <div class="fail-banner">
-                    <h1 style="margin:0; font-size: 2.8rem;">❌ PREDICTION: FAIL</h1>
-                    <p style="font-size: 1.2rem; margin-top: 8px; opacity: 0.95;">The student is at severe risk of failing the course.</p>
-                    <div style="font-size: 1.5rem; font-weight: 800; margin-top: 10px;">Fail Probability: {fail_prob*100:.1f}%</div>
+                    <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.9;">Assessment for: {student_name}</div>
+                    <h1 style="margin:4px 0; font-size: 2.6rem;">❌ PREDICTION: FAIL</h1>
+                    <p style="font-size: 1.1rem; margin-top: 6px; opacity: 0.95;">The student is at severe risk of failing the course (detention/shortage).</p>
+                    <div style="font-size: 1.4rem; font-weight: 800; margin-top: 8px;">Fail Probability: {fail_prob*100:.1f}%</div>
                 </div>
                 """, unsafe_allow_html=True)
                 
